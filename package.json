@@ -21,11 +21,14 @@
   "homepage": "https://github.com/marcelloventurini/express-sequelize#readme",
   "dependencies": {
     "express": "^5.2.1",
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.11",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "eslint": "^9.39.2",
-    "globals": "^17.1.0"
+    "globals": "^17.1.0",
+    "sequelize-cli": "^6.6.5"
   }
 }
