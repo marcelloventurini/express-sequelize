@@ -1,7 +1,10 @@
+const database = require('../models/index.js');
+
 class PersonController {
   static async getAll(req, res) {
     try {
-      // acessar modelo
+      const peopleList = await database.Person.findAll();
+      return res.status(200).json(peopleList);
     } catch (error) {
       // error handling
     }
