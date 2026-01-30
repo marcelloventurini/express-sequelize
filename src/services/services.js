@@ -32,6 +32,10 @@ class Services {
 
     return true;
   }
+
+  async deleteRegister(id) {
+    return dataSource[this.model].destroy({ where: { id: id } });
+  }
 }
 
 module.exports = Services;

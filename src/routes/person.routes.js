@@ -8,5 +8,6 @@ router.get('/pessoas', (req, res) => personController.getAll(req, res));
 router.get('/pessoas/:id', (req, res) => personController.getById(req, res));
 router.post('/pessoas/', (req, res) => personController.create(req, res));
 router.put('/pessoas/:id', (req, res) => personController.update(req, res));
+router.delete('/pessoas/:id', (req, res) => personController.delete(req, res));
 
 module.exports = router;

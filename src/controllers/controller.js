@@ -15,7 +15,7 @@ class Controller {
   }
 
   async getById(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     try {
       const register = await this.serviceEntity.getRegisterById(Number(id));
@@ -50,6 +50,16 @@ class Controller {
       }
 
       return res.status(200).json({ mensagem: 'atualizado com sucesso' });
+    } catch (error) {
+      // todo
+    }
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    try {
+      await this.serviceEntity.deleteRegister(Number(id));
+      return res.status(200).json({ mensagem: 'registro apagado' });
     } catch (error) {
       // todo
     }
