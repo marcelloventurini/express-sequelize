@@ -25,6 +25,16 @@ class Controller {
     }
   }
 
+  async create(req, res) {
+    const data = req.body;
+    try {
+      const newRegister = await this.serviceEntity.createRegister(data);
+      return res.status(200).json(newRegister);
+    } catch (error) {
+      // todo
+    }
+  }
+
   async update(req, res) {
     const { id } = req.params;
     const updatedData = req.body;

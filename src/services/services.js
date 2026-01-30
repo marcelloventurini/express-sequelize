@@ -15,6 +15,10 @@ class Services {
     return dataSource[this.model].findByPk(id);
   }
 
+  async createRegister(data) {
+    return dataSource[this.model].create(data);
+  }
+
   async updateRegister(updatedData, id) {
     const updatedRegisterList = dataSource[this.model].update(updatedData, {
       where: {
