@@ -1,3 +1,5 @@
+// camada responsável por lidar com requisições e respostas HTTP;
+// ela não sabe como o banco funciona.
 class Controller {
   constructor(serviceEntity) {
     this.serviceEntity = serviceEntity;
@@ -7,6 +9,17 @@ class Controller {
     try {
       const registerList = await this.serviceEntity.getAllRegisters();
       return res.status(200).json(registerList);
+    } catch (error) {
+      // todo
+    }
+  }
+
+  async getById(req, res) {
+    const {id} = req.params;
+
+    try {
+      const register = await this.serviceEntity.getRegisterById(Number(id));
+      return res.status(200).json(register);
     } catch (error) {
       // todo
     }

@@ -1,3 +1,5 @@
+// camada responsável pela lógica do negócio e dados;
+// ela conhece os métodos do Sequelize, mas não sabe o que é um objeto 'res' ou um status 404.
 const dataSource = require('../models/index.js');
 
 class Services {
@@ -9,14 +11,18 @@ class Services {
     return dataSource[this.model].findAll();
   }
 
+  async getRegisterById(id) {
+    return dataSource[this.model].findByPk(id);
+  }
+
   async updateRegister(updatedData, id) {
-    const updatedRegistersList = dataSource[this.model].update(updatedData, {
+    const updatedRegisterList = dataSource[this.model].update(updatedData, {
       where: {
         id: id,
       },
     });
 
-    if (updatedRegistersList[0] === 0) {
+    if (updatedRegisterList[0] === 0) {
       return false;
     }
 
