@@ -7,6 +7,19 @@ class PersonController extends Controller {
   constructor() {
     super(personServices);
   }
+
+  async getEnrollments(req, res) {
+    const { estudanteId } = req.params;
+    try {
+      const enrollmentList = await personServices.getEnrollmentsByStudent(
+        Number(estudanteId),
+      );
+
+      return res.status(200).json(enrollmentList);
+    } catch (error) {
+      // todo
+    }
+  }
 }
 
 module.exports = PersonController;
