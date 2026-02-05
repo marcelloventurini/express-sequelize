@@ -1,6 +1,6 @@
 // camada responsável pela lógica do negócio e dados;
 // ela conhece os métodos do Sequelize, mas não sabe o que é um objeto 'res' ou um status 404.
-const dataSource = require('../models/index.js');
+const dataSource = require('../database/models/index.js');
 
 class Services {
   constructor(modelName) {
