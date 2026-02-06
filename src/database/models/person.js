@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       Person.hasMany(models.Enrollment, {
         foreignKey: 'estudante_id',
         scope: { status: 'matriculado' },
-        as: 'enrolledClasses'
+        as: 'enrolledClasses',
       });
     }
   }
@@ -31,8 +31,13 @@ module.exports = (sequelize, DataTypes) => {
       defaultScope: {
         where: {
           ativo: true,
-        }
-      }
+        },
+      },
+      scopes: {
+        allRegisters: {
+          where: {},
+        },
+      },
     },
   );
 
