@@ -10,7 +10,7 @@ class Controller {
       const registerList = await this.serviceEntity.getAllRegisters();
       return res.status(200).json(registerList);
     } catch (error) {
-      // todo
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -21,7 +21,7 @@ class Controller {
       const register = await this.serviceEntity.getRegisterById(Number(id));
       return res.status(200).json(register);
     } catch (error) {
-      // todo
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -31,7 +31,7 @@ class Controller {
       const newRegister = await this.serviceEntity.createRegister(data);
       return res.status(200).json(newRegister);
     } catch (error) {
-      // todo
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -51,7 +51,7 @@ class Controller {
 
       return res.status(200).json({ mensagem: 'atualizado com sucesso' });
     } catch (error) {
-      // todo
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -61,7 +61,7 @@ class Controller {
       await this.serviceEntity.deleteRegister(Number(id));
       return res.status(200).json({ mensagem: 'registro apagado' });
     } catch (error) {
-      // todo
+      return res.status(500).json({ error: error.message });
     }
   }
 }
