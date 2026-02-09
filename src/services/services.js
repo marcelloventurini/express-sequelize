@@ -7,8 +7,8 @@ class Services {
     this.model = modelName;
   }
 
-  async getAllRegisters() {
-    return dataSource[this.model].findAll();
+  async getAllRegisters(where = {}) {
+    return dataSource[this.model].findAll({ where: { ...where } });
   }
 
   async getRegistersByScope(scope) {
