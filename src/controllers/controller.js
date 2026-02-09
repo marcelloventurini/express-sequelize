@@ -50,12 +50,13 @@ class Controller {
   }
 
   async update(req, res) {
-    const { id } = req.params;
+    const { ...params } = req.params;
     const updatedData = req.body;
+    const where = idConverter(params);
     try {
       const isUpdated = await this.serviceEntity.updateRegister(
         updatedData,
-        Number(id),
+        where,
       );
       if (!isUpdated) {
         return res

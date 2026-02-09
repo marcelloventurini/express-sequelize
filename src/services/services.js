@@ -27,11 +27,9 @@ class Services {
     return dataSource[this.model].create(data);
   }
 
-  async updateRegister(updatedData, id) {
+  async updateRegister(updatedData, params) {
     const updatedRegisterList = dataSource[this.model].update(updatedData, {
-      where: {
-        id: id,
-      },
+      where: { ...params },
     });
 
     if (updatedRegisterList[0] === 0) {
