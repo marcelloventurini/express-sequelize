@@ -16,13 +16,16 @@ router.post('/pessoas/', (req, res) => personController.create(req, res));
 router.put('/pessoas/:id', (req, res) => personController.update(req, res));
 router.delete('/pessoas/:id', (req, res) => personController.delete(req, res));
 
-router.get('/pessoas/:estudanteId/matriculas', (req, res) =>
+router.get('/pessoas/:estudante_id/matriculas', (req, res) =>
   personController.getActiveEnrollments(req, res),
 );
-router.get('/pessoas/:estudanteId/matriculas/todos', (req, res) =>
+router.get('/pessoas/:estudante_id/matriculas/todos', (req, res) =>
   personController.getAllEnrollments(req, res),
 );
-router.post('/pessoas/:estudanteId/matriculas', (req, res) =>
+router.get('/pessoas/:estudante_id/matriculas/:id', (req, res) =>
+  enrollmentController.getOne(req, res),
+);
+router.post('/pessoas/:estudante_id/matriculas', (req, res) =>
   enrollmentController.create(req, res),
 );
 

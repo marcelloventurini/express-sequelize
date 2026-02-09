@@ -1,5 +1,8 @@
 // camada responsável por lidar com requisições e respostas HTTP;
 // ela não sabe como o banco funciona.
+
+const idConverter = require('../utils/string-converter.helper.js');
+
 class Controller {
   constructor(serviceEntity) {
     this.serviceEntity = serviceEntity;
@@ -19,6 +22,17 @@ class Controller {
 
     try {
       const register = await this.serviceEntity.getRegisterById(Number(id));
+      return res.status(200).json(register);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+
+  async getOne(req, res) {
+    const { ...params } = req.params;
+    const where = idConverter(params);
+    try {
+      const register = await this.serviceEntity.getRegister(where);
       return res.status(200).json(register);
     } catch (error) {
       return res.status(500).json({ error: error.message });
