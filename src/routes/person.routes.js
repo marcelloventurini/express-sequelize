@@ -22,6 +22,9 @@ router.get('/pessoas/:estudante_id/matriculas', (req, res) =>
 router.get('/pessoas/:estudante_id/matriculas/todos', (req, res) =>
   personController.getAllEnrollments(req, res),
 );
+router.get('/pessoas/:estudante_id/matriculas/confirmadas', (req, res) =>
+  enrollmentController.getEnrollmentsByStudent(req, res),
+);
 router.get('/pessoas/:estudante_id/matriculas/:id', (req, res) =>
   enrollmentController.getOne(req, res),
 );

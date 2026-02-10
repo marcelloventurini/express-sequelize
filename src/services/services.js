@@ -23,6 +23,10 @@ class Services {
     return dataSource[this.model].findOne({ where: { ...where } });
   }
 
+  async getAndCountRegisters(where) {
+    return dataSource[this.model].findAndCountAll({ where: { ...where } });
+  }
+
   async createRegister(data) {
     return dataSource[this.model].create(data);
   }
