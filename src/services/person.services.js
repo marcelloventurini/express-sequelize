@@ -3,6 +3,7 @@ const Services = require('./services.js');
 class PersonServices extends Services {
   constructor() {
     super('Person');
+    this.enrollmentServices = new Services('Enrollment');
   }
 
   async getActiveEnrollmentsByStudent(id) {
@@ -21,6 +22,14 @@ class PersonServices extends Services {
   async getPeopleScopeAll() {
     const personList = await super.getRegistersByScope('allRegisters');
     return personList;
+  }
+
+  async cancelPersonAndEnrollments(id) {
+    await super.updateRegister({ ativo: false }, { id: id });
+    await this.enrollmentServices.updateRegister(
+      { status: 'cancelado' },
+      { estudante_id: id },
+    );
   }
 }
 
